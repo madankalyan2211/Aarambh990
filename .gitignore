@@ -7,6 +7,12 @@
 server/.env
 server/.env.production
 
+# Environment backup files (contains secrets)
+*.env.bak
+*.env.bak*
+server/*.env.bak
+server/*.env.bak*
+
 # Dependencies
 node_modules
 .pnp
@@ -73,3 +79,16 @@ test-*.html
 
 # Local Netlify folder
 .netlify
+
+# Large files and archives (>50MB)
+*.zip
+*.tar.gz
+*.patch
+aarambh-*.zip
+*.pkg
+
+# Sensitive configuration backups
+*credentials*
+*secret*
+*token*
+GOOGLE_OAUTH_SETUP.txt
