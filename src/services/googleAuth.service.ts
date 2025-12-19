@@ -8,9 +8,8 @@ import { env } from '../config/env';
 // Check if Google OAuth is properly configured
 export const isGoogleOAuthConfigured = (): boolean => {
   return !!env.googleClientId && 
-         !!env.googleClientSecret && 
          env.googleClientId !== 'your-google-client-id-here' &&
-         env.googleClientSecret !== 'your-google-client-secret-here';
+         env.googleClientId.includes('.apps.googleusercontent.com');
 };
 
 /**
