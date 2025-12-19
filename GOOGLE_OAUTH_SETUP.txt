@@ -1,0 +1,60 @@
+===========================================
+GOOGLE OAUTH SETUP INSTRUCTIONS
+===========================================
+
+STEP 1: Create Google OAuth Credentials
+----------------------------------------
+1. Go to: https://console.cloud.google.com/
+2. Create a new project (or select existing)
+3. Enable "Google+ API"
+
+STEP 2: Create OAuth Client ID
+-------------------------------
+1. Go to: APIs & Services → Credentials
+2. Click: + CREATE CREDENTIALS → OAuth client ID
+3. Application type: Web application
+4. Name: Aarambh LMS
+
+STEP 3: Add Authorized Redirect URIs
+-------------------------------------
+For Development:
+  http://localhost:5173/auth/callback
+  http://localhost:3002/api/google/auth/google/callback
+
+For Production (add later):
+  https://your-domain.com/auth/callback
+  https://your-backend-domain.com/api/google/auth/google/callback
+
+STEP 4: Copy Your Credentials
+------------------------------
+After creating, you'll get:
+  - Client ID (starts with numbers, ends with .apps.googleusercontent.com)
+  - Client Secret (starts with GOCSPX-)
+
+STEP 5: Update Your .env Files
+-------------------------------
+
+Frontend (.env):
+  VITE_GOOGLE_CLIENT_ID=your_actual_client_id_here
+
+Backend (server/.env):
+  GOOGLE_CLIENT_ID=your_actual_client_id_here
+  GOOGLE_CLIENT_SECRET=your_actual_client_secret_here
+  FRONTEND_URL=http://localhost:5173
+
+STEP 6: Restart Both Servers
+-----------------------------
+After updating .env files, restart:
+  1. Stop backend (Ctrl+C in terminal)
+  2. Stop frontend (Ctrl+C in terminal)
+  3. Start backend: cd server && npm start
+  4. Start frontend: npm run dev
+
+STEP 7: Test
+------------
+1. Open: http://localhost:5173
+2. Select "Student" role
+3. Click "Sign in with Google"
+4. Should work now!
+
+===========================================
