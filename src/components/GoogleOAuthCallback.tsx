@@ -16,43 +16,24 @@ export function GoogleOAuthCallback({ onLogin }: GoogleOAuthCallbackProps) {
     if (token && userData) {
       try {
         const parsedUserData = JSON.parse(decodeURIComponent(userData));
-        
-        // Get the pending role from localStorage (set before OAuth redirect)
-        const pendingRole = localStorage.getItem('pendingRole');
-        
-        // Use the pending role if available, otherwise use the role from backend
-        const finalRole = pendingRole || parsedUserData.role;
-        
-        // Update the user data with the final role
-        const finalUserData = {
-          ...parsedUserData,
-          role: finalRole
-        };
-        
-        // Store token and user data
-        processGoogleOAuthToken(token, finalUserData);
-        
-        // Clean up pending role
-        localStorage.removeItem('pendingRole');
+        processGoogleOAuthToken(token, parsedUserData);
         
         // Call the onLogin callback with user data
         onLogin(
-          finalUserData.role as UserRole,
-          finalUserData.name,
-          finalUserData.email
+          parsedUserData.role as UserRole,
+          parsedUserData.name,
+          parsedUserData.email
         );
         
         // Redirect to dashboard by changing the URL hash
         window.location.hash = '#dashboard';
       } catch (error) {
         console.error('Error processing Google OAuth callback:', error);
-        // Clean up and redirect to login page
-        localStorage.removeItem('pendingRole');
+        // Redirect to login page
         window.location.hash = '#login';
       }
     } else {
-      // Clean up and redirect to login page
-      localStorage.removeItem('pendingRole');
+      // Redirect to login page
       window.location.hash = '#login';
     }
   }, [onLogin]);

@@ -128,19 +128,13 @@ function App() {
     }
   }, [isDark]);
 
-  // Handle hash changes for popup routing and OAuth callback
+  // Handle hash changes for popup routing
   useEffect(() => {
     const handleHashChange = () => {
       if (window.location.hash === '#messages') {
         setCurrentPage('messages');
       }
     };
-
-    // Check if we're on the OAuth callback page
-    const currentPath = window.location.pathname;
-    if (currentPath.includes('/auth/callback') || currentPath.includes('/google-oauth-callback')) {
-      setCurrentPage('google-oauth-callback');
-    }
 
     // Check initial hash
     handleHashChange();

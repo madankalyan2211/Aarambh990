@@ -6,7 +6,7 @@ const { OAuth2Client } = require('google-auth-library');
 const googleClient = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
-  `${process.env.FRONTEND_URL || 'http://localhost:5173'}/auth/callback`
+  `${process.env.FRONTEND_URL || 'http://localhost:5174'}/api/google/auth/google/callback`
 );
 
 /**
@@ -71,7 +71,7 @@ exports.googleCallback = async (req, res) => {
     );
     
     // Redirect back to frontend with token
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5174';
     res.redirect(`${frontendUrl}/auth/callback?token=${token}&user=${encodeURIComponent(JSON.stringify({
       id: user._id,
       name: user.name,
