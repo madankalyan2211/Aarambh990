@@ -9,8 +9,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        fromValue: PORT
       - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
@@ -19,28 +17,11 @@ services:
         sync: false
       - key: GMAIL_APP_PASSWORD
         sync: false
-      - key: GMAIL_FROM_NAME
-        value: Aarambh LMS
-      - key: SMTP_HOST
-        value: smtp.gmail.com
-      - key: SMTP_PORT
-        value: 587
-      - key: SMTP_SECURE
-        value: false
-      - key: OTP_EXPIRY_MINUTES
-        value: 10
-      - key: OTP_LENGTH
-        value: 6
-      - key: OTP_MAX_ATTEMPTS
-        value: 3
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
       - key: ALLOWED_ORIGINS
         sync: false
-      - key: API_SECRET_KEY
-        sync: false
-      - key: GEMINI_API_KEY
-        sync: false
-      - key: GROQ_API_KEY
-        sync: false
-      # SSL Configuration for external services
-      - key: SSL_CA_PATH
-        value: ""
