@@ -54,6 +54,7 @@
             "react-pdf": "^10.2.0",
             "react-resizable-panels": "^2.1.7",
             "recharts": "^2.15.2",
+            "serve": "^14.2.1",
             "socket.io-client": "^4.8.1",
             "sonner": "^2.0.3",
             "tailwind-merge": "*",
@@ -71,7 +72,7 @@
             "dev": "vite",
             "build": "vite build",
             "preview": "vite preview --port 5173 --host 0.0.0.0",
-            "start": "vite preview --port 5173 --host 0.0.0.0",
+            "start": "serve -s build -l 5173",
             "build:backend": "cd server && npm install",
             "start:backend": "cd server && npm start"
       }
