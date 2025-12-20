@@ -1,0 +1,13 @@
+# Railway Monorepo Configuration
+
+[[services]]
+name = "backend"
+source = "server"
+build = { builder = "NIXPACKS" }
+deploy = { startCommand = "npm start" }
+
+[[services]]
+name = "frontend"
+source = "."
+build = { builder = "NIXPACKS" }
+deploy = { startCommand = "npm run dev" }
