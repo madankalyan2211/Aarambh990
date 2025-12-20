@@ -37,8 +37,12 @@ export function TechUpdatesPage() {
     setError(null);
     
     try {
+      // Get API base URL from environment
+      const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || '';
+      const endpoint = API_BASE_URL ? `${API_BASE_URL}/rss/tech-updates` : '/api/rss/tech-updates';
+      
       // Using our backend proxy to fetch RSS feed
-      const response = await fetch('/api/rss/tech-updates');
+      const response = await fetch(endpoint);
       
       if (!response.ok) {
         throw new Error(`Failed to fetch tech updates: ${response.status} ${response.statusText}`);
